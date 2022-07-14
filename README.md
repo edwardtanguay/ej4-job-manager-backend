@@ -16,6 +16,4 @@
 		- bycript
 	- frontend
 		- React (Vite)
-		- React Router
 		- Sass
-		- useContext
