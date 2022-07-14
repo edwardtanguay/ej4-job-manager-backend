@@ -1,23 +1,21 @@
 # ej2-job-manager-backend
 
 - **What we will build**
-	- we will extend this project in which we built a full-stack MERN app running at Netlify (frontend), Heroku (backend) connecting to an online database (MongoDB Atlas): 
-		- [Create full-stack MERN site published at Heroku/Netlify saving data to MongoDB Atlas](https://edwardtanguay.netlify.app/howtos?id=588)
-	- the final state of this project was that we could visit the site at Netlify, which fetched data from the Heroku API, which in turn fetched data from MongoDB Atlas:##tehonlinefinished
-	- the task we will accomplish in this howto is:
-		- when a user comes to this page, they are not allowed to see the job sources 
-		- instead they see a login form
-		- if they login successfully, they able to view the information for 20 seconds
-		- after 20 seconds are expired, they are logged out and they have to log in again to see the information
-			- (20 seconds is of course for demonstration purposes, one can change this to any length of time later and keep a user logged in when they movement on the site, but the important aspect here is that our JWT tokens at some point expire which increases the security of our site)
-			- after implementing login, the site looks like this:##howlookforsjwt
-	- note that after successful login, **the user can refresh the page and stay logged in**
-		- this is accomplished via a **maintain-login** route which sends the JWT token back
-	- we will keep this site one page for the time being
-		- the user object returned from a successful login will be saved in a variable in React
-		- if the user object exists, only then will another fetch be called to get the sensitive data, in our case the job sources
-- **What we will use:**
-	- Node/React
-	- JWT
-	- Postman
-	- VSCode REST Client
+	- we will extend our full-stack MERN application to which [we just added JWT to authenticate our users](https://edwardtanguay.netlify.app/howtos?id=589)
+	- we will base our authorization on a concept of users, groups and pages
+		- each user has a list of groups to which they belong
+		- each page has a list of groups to which it allows access
+		- there is always an active user, if no users is logged in, then anonymous user is active, who also belongs to specific groups
+	- we will build a new collection called users
+		- passwords stored as bcrypt hashes
+- **What we will use**
+	- backend
+		- Node
+		- Express
+		- MongoDB
+		- bycript
+	- frontend
+		- React (Vite)
+		- React Router
+		- Sass
+		- useContext
