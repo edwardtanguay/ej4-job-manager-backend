@@ -66,12 +66,14 @@ app.post('/login', async (req, res) => {
 	if (user === null) {
 		res.status(403).send('user not found');
 	} else {
-		const passwordIsCorrect = await bcrypt.compare(
-			password,
-			user.hash
-		);
+		const passwordIsCorrect = await bcrypt.compare(password, user.hash);
 		if (passwordIsCorrect) {
-            const frontendUser = { username, firstName: user.firstName, lastName: user.lastName, userGroups: user.accessGroups };
+			const frontendUser = {
+				username,
+				firstName: user.firstName,
+				lastName: user.lastName,
+				accessGroups: user.accessGroups,
+			};
 			jwt.sign(
 				{ user },
 				'secretkey',
