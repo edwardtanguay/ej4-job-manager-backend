@@ -1,0 +1,23 @@
+# ej2-job-manager-backend
+
+- **What we will build**
+	- we will extend this project in which we built a full-stack MERN app running at Netlify (frontend), Heroku (backend) connecting to an online database (MongoDB Atlas): 
+		- [Create full-stack MERN site published at Heroku/Netlify saving data to MongoDB Atlas](https://edwardtanguay.netlify.app/howtos?id=588)
+	- the final state of this project was that we could visit the site at Netlify, which fetched data from the Heroku API, which in turn fetched data from MongoDB Atlas:##tehonlinefinished
+	- the task we will accomplish in this howto is:
+		- when a user comes to this page, they are not allowed to see the job sources 
+		- instead they see a login form
+		- if they login successfully, they able to view the information for 20 seconds
+		- after 20 seconds are expired, they are logged out and they have to log in again to see the information
+			- (20 seconds is of course for demonstration purposes, one can change this to any length of time later and keep a user logged in when they movement on the site, but the important aspect here is that our JWT tokens at some point expire which increases the security of our site)
+			- after implementing login, the site looks like this:##howlookforsjwt
+	- note that after successful login, **the user can refresh the page and stay logged in**
+		- this is accomplished via a **maintain-login** route which sends the JWT token back
+	- we will keep this site one page for the time being
+		- the user object returned from a successful login will be saved in a variable in React
+		- if the user object exists, only then will another fetch be called to get the sensitive data, in our case the job sources
+- **What we will use:**
+	- Node/React
+	- JWT
+	- Postman
+	- VSCode REST Client
