@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 // CREATE SALT AND HASH WHEN USER CREATES PASSWORD
 const salt = await bcrypt.genSalt();
 console.log(`salt: ${salt}`);
-const hash = await bcrypt.hash('password', salt);
+const hash = await bcrypt.hash('edward123', salt);
 console.log(`hash: ${hash}`);
 
 // SAVE CREATED HASH IN THE DATABASE FOR THE USER
@@ -15,3 +15,6 @@ const hash3 = '$2b$10$CeLYT7jAguaiJZsEjAej.O0Fqh/rIGk6209whKjCee0RyPRKwzndy';
 console.log(await bcrypt.compare('password', hash1));
 console.log(await bcrypt.compare('password', hash2));
 console.log(await bcrypt.compare('password', hash3));
+
+		const passwordIsCorrect = await bcrypt.compare('edward123', '$2b$10$0n33Ckfye6cDQKZzRiwpTuDtRdFlmbZ1mUIAjFmj7oZfFICFgn2fC');
+		console.log(passwordIsCorrect);
